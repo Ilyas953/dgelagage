@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { data } from "../../data";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,7 +9,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "contact@may-tec.net",
+      to: data.email,
       subject: "Nouvelle demande de devis",
       html: `
         <h1>Nouvelle demande de devis</h1>
@@ -25,4 +26,5 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ error: "Erreur lors de l'envoi" }), { status: 500 });
   }
 }
+
 

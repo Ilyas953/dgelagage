@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { data } from "../data";
+import { data } from "../../data";
 
 
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
         <p><strong>Email :</strong> ${email}</p>
         <p><strong>Téléphone :</strong> ${telephone}</p>
         <p><strong>Message :</strong> ${message}</p>
-        
+
       `,
     });
 

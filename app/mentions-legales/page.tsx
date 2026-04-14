@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { Header, Footer } from "../components"
 import { data } from "../data"
+
+export const metadata: Metadata = {
+    title: "Mentions Légales",
+    description: `Mentions légales de ${data.entreprise}, élagueur et paysagiste à Viarmes (95760) dans le Val-d'Oise.`,
+    alternates: {
+        canonical: `${data.url}/mentions-legales`,
+    },
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
 
 export default function Page() {
     return (

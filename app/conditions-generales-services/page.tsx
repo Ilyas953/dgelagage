@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { Header, Footer } from "../components"
 import { data } from "../data"
+
+export const metadata: Metadata = {
+    title: "Conditions Générales de Services",
+    description: `Conditions générales de services de ${data.entreprise}, élagueur et paysagiste professionnel dans le Val-d'Oise (95).`,
+    alternates: {
+        canonical: `${data.url}/conditions-generales-services`,
+    },
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
 
 export default function Page() {
     return (
@@ -47,7 +60,7 @@ export default function Page() {
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold text-accent mb-4">6. Responsabilité</h2>
                     <p className="mb-4">
-                        Maytec est responsable des dommages causés par ses interventions. Le client est responsable de l'accès au chantier.
+                        {data.entreprise} est responsable des dommages causés par ses interventions. Le client est responsable de l'accès au chantier.
                     </p>
                 </section>
 

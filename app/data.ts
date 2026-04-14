@@ -1,7 +1,7 @@
 export const data = {
     entreprise:"DG Elagage",
     fonction:["élagage", "paysagiste"],
-    url:"https://dgelagage.fr",
+    url:"https://dgelagage95.fr",
     name:'Pinto Adi',
     email:'dgelagage9560@gmail.com',
     numero:'06 43 00 98 64',
@@ -10,7 +10,7 @@ export const data = {
     horaire:'de 8h a 20h',
     services:[
         {
-            titre:"elagage toute hauteur",
+            titre:"Élagage toute hauteur",
             description:"Nos experts réalisent l'élagage de vos arbres en toute sécurité, même à grande hauteur.",
             icon:"material-symbols:forest-outline"
         },
@@ -20,28 +20,28 @@ export const data = {
             icon:"material-symbols:warning-outline"
         },
         {
-            titre:"taille et soin des arbres",
+            titre:"Taille et soin des arbres",
             description:"Pour des arbres sains et bien entretenus, nous proposons la taille et le soin adaptés à chaque espèce.",
             icon:"material-symbols:park-outline"
         },
         {
-            titre:"taille d'arbustes",
+            titre:"Taille d'arbustes",
             description:"Nous sculptons vos arbustes pour embellir vos jardins tout en favorisant leur santé.  ",
             icon:"mdi:tree-outline"
         },
         {
-            titre:"tailles de haies",
+            titre:"Tailles de haies",
             description:"Pour des haies nettes et harmonieuses, nous réalisons des tailles régulières et précises. ",
             icon:"roentgen:bush"
         },
         {
-            titre:"evacuation des vegetaux",
+            titre:"Évacuation des végétaux",
             description:"Après chaque intervention, nous assurons l'évacuation et le recyclage des végétaux.",
             icon:"tabler:leaf"
         },
 
     ],
-    titreh1: "Elagage et paysagiste a Viarmes dans le Val-d’Oise",
+    titreh1: "Élagage et paysagiste à Viarmes dans le Val-d'Oise",
     soustitrehero:"Interventions rapides, entretien de jardins et élagage sécurisé pour particuliers et professionnels. Appelez dès maintenant pour un devis gratuit et rapide !",
     projetnombre: 30,
     satisfaction: 100,

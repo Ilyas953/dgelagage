@@ -8,6 +8,7 @@ export function ContactForm() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const classnamecase =
     "flex flex-col lg:flex-row gap-[10px] border border-white bg-white/25 w-full px-6 py-[15px] text-[20px] font-semibold justify-center items-center rounded-[12px]  pl-14";
@@ -15,16 +16,31 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setLoading(true);
+  setError("");
 
   const form = e.currentTarget;
 
   const formData = new FormData(form);
-  const data = {
-    nom: formData.get("nom"),
-    email: formData.get("email"),
-    telephone: formData.get("telephone"),
-    message: formData.get("message"),
-  };
+  const nom = formData.get("nom") as string;
+  const email = formData.get("email") as string;
+  const telephone = formData.get("telephone") as string;
+  const message = formData.get("message") as string;
+
+  // Validation
+  if (!nom.trim() || !email.trim() || !telephone.trim()) {
+    setError("Veuillez remplir tous les champs obligatoires");
+    setLoading(false);
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    setError("Veuillez entrer une adresse email valide");
+    setLoading(false);
+    return;
+  }
+
+  const data = { nom, email, telephone, message };
 
   try {
     const res = await fetch("/api/send-email", {
@@ -33,13 +49,21 @@ export function ContactForm() {
       body: JSON.stringify(data),
     });
 
-    if (!res.ok) throw new Error("Erreur serveur");
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Erreur lors de l'envoi");
+    }
 
     setSuccess(true);
     form.reset();
+
+    // Masquer le message de succès après 5 secondes
+    setTimeout(() => {
+      setSuccess(false);
+    }, 5000);
   } catch (err) {
     console.error(err);
-    alert("Erreur lors de l'envoi, réessayez plus tard");
+    setError(err instanceof Error ? err.message : "Erreur lors de l'envoi, réessayez plus tard");
   } finally {
     setLoading(false);
   }
@@ -79,7 +103,8 @@ export function ContactForm() {
         </button>
       </Bouton>
 
-      {success && <p className="text-green-500 mt-2 text-center font-semibold text-[24px]">Demande envoyé avec succès !</p>}
+      {error && <p className="text-red-500 mt-2 text-center font-semibold text-[20px]">{error}</p>}
+      {success && <p className="text-green-500 mt-2 text-center font-semibold text-[24px]">✓ Demande envoyée avec succès !</p>}
     </form>
   );
 }

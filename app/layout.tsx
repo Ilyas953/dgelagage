@@ -127,16 +127,6 @@ export function Schema() {
         },
       })),
     },
-    review: data.avis.map((avis) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: avis.nom },
-      reviewBody: avis.commentaire,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-    })),
   };
 
   return (

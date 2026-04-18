@@ -137,11 +137,6 @@ export function Schema() {
         bestRating: "5",
       },
     })),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: data.avis.length,
-    },
   };
 
   return (
